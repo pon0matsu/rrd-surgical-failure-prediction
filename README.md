@@ -7,5 +7,17 @@ This repository contains code for our paper on rhegmatogenous retinal detachment
 ### Model Access
 - **Web Application**: https://huggingface.co/spaces/JRVS-DSDP/ppv-rrd-risk-stratification
 
+### Repository Structure
+```
+src/
+├── feature_selection.py    # Feature selection using RFECV
+├── preprocessing.py        # Data preprocessing functions
+├── model_training.py       # Model training pipeline
+└── evaluation.py          # Model evaluation utilities
+```
+
+### Requirements
+See `requirements.txt` for required packages.
+
 ### Status
-Code will be released upon publication.
+Full implementation will be released upon publication.
