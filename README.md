@@ -9,6 +9,3 @@ This repository contains code for our paper on rhegmatogenous retinal detachment
 
 ### Status
 Code will be released upon publication.
-
----
-*Note: Full code release is planned following peer review and publication.*
