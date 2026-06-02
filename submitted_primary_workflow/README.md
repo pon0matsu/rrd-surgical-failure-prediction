@@ -1,7 +1,7 @@
 # Submitted Primary Workflow
 
-This folder contains public `.py` code-cell exports from the submitted
-imputation and model-building notebooks.
+This folder contains public Python files for the submitted imputation and
+model-building workflow.
 
 Steps 01-02 were upstream source and cohort preparation steps and are not
 included in this public code-only release.  The public workflow begins with
