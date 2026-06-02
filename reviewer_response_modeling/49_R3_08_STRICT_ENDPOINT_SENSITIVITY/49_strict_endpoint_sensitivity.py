@@ -1,20 +1,3 @@
-"""Step 49: strict anatomical-endpoint model rebuilding.
-
-This analysis answers Reviewer 3 comment 8.  The submitted PPV train/hold-out
-split is preserved, but rows with original `Failure level (6M) == 2` are
-excluded before imputation and model fitting.  The endpoint is then redefined
-as level 0 = success and levels 1/3 = strict anatomical failure.
-
-The imputer, random undersampling, classical-model hyperparameter tuning, and
-model fitting are rerun inside this Review step.  The submitted RFECV36 feature
-policy is retained; feature selection itself is not rerun.
-
-The final public outputs are intentionally limited to the files needed to
-check the analysis: case flow, policy, tuning results, combined model metrics,
-and run status. Private imputed/fold files are still generated as intermediate
-files, but their file-index CSVs are not written to `local_outputs`.
-"""
-
 from __future__ import annotations
 
 from pathlib import Path
@@ -165,7 +148,7 @@ def strict_endpoint_policy_table(feature_policy: pd.DataFrame) -> pd.DataFrame:
                 "policy_section": "analysis_flags",
                 "item": "classical_model_hyperparameter_tuning_rerun",
                 "value": CLASSICAL_MODEL_HYPERPARAMETER_TUNING_RERUN_IN_THIS_SCRIPT,
-                "note": "LR/RF/XGB/LGB Step05-style grid search is rerun on the strict-endpoint training data.",
+                "note": "LR/RF/XGB/LGB grid search is run on the strict-endpoint training data.",
             },
             {
                 "policy_section": "analysis_flags",

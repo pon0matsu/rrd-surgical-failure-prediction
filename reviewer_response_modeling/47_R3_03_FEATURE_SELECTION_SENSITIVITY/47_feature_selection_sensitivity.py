@@ -1,27 +1,3 @@
-"""Step 47: feature-selection sensitivity with submitted fold files.
-
-This script answers the reviewer concern about RFECV feature selection.  It
-compares three feature policies:
-
-1. all 46 nonconstant submitted features;
-2. fixed clinical compact26 features;
-3. submitted RFECV36 features.
-
-The submitted fold files are reused:
-`fold_0_train_data_after_imputation.csv` through
-`fold_4_val_data_after_imputation.csv`.  New folds are not created.  Hold-out
-evaluation uses the submitted final train/hold-out files.
-
-For logistic regression, two variants are evaluated:
-
-1. `LR`: the submitted-style logistic regression without ridge shrinkage;
-2. `ridge_logistic`: ridge-penalized logistic regression with C selected inside
-   each training set.
-
-The public outputs are limited to policy, tuning, combined metrics, and run
-status so that the sensitivity analysis is easy to inspect.
-"""
-
 from __future__ import annotations
 
 from pathlib import Path
@@ -248,7 +224,7 @@ def feature_selection_policy_table(
                 "policy_section": "analysis_flags",
                 "item": "classical_model_hyperparameter_tuning_rerun",
                 "value": CLASSICAL_MODEL_HYPERPARAMETER_TUNING_RERUN_IN_THIS_SCRIPT,
-                "note": "LR/RF/XGB/LGB Step05-style grid search is rerun for each feature set and resampling condition.",
+                "note": "LR/RF/XGB/LGB grid search is run for each feature set and resampling condition.",
             },
             {
                 "policy_section": "analysis_flags",

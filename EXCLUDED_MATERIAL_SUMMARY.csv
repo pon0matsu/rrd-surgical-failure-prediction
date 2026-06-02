@@ -1,8 +1,0 @@
-﻿source_area,excluded_examples,reason
-submitted archive,"train/test/fold/imputation CSVs, df_cleaned_final.csv, FINAL/CV output folders",patient-level or derived patient-level data/output
-submitted archive,"metric-summary notebooks, result-combine notebooks, final figure notebooks, debug/test scripts","display, output-combination, or debugging material outside model-building provenance"
-submitted/user-provided exports,grid_search_results.csv raw score exports,raw tuning score tables are not needed for the public code release; adopted hyperparameters are recorded separately
-submitted archive,"01_20240309_datacleaning.ipynb, 02_preparation_before_imputation.ipynb","private source/cohort preparation requiring patient-level source or cleaned input data; excluded by file selection instead of editing code cells"
-Review,"local_outputs, local_prediction_exports_private, local_row_exports_private, local_intermediate_*_private",generated outputs or private patient-derived intermediates
-Review,"Excel-template, PDF, figure, response-letter, and manuscript-layout scripts",presentation support rather than model rebuilding
-Review,"Steps 41, 43-46, 51-56, 57-58","model application, metric/table formatting, validation display, baseline table, response, or publication-display support"

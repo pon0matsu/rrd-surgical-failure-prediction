@@ -1,14 +1,3 @@
-"""Review-local modeling data helpers.
-
-These functions are copied in spirit from the submitted 20250725 notebooks and
-the reviewer-revision audit scripts, but they live inside Review so the
-reviewer package does not import code from the larger publication workspace.
-
-Step-specific model rebuilding is kept in the relevant Step scripts.  This
-module provides shared readers, submitted constants, TabPFN checkpoint handling,
-and small data utilities.
-"""
-
 from __future__ import annotations
 
 import importlib.util
@@ -69,20 +58,12 @@ GRID_SEARCH_N_JOBS = 1
 RIDGE_LOGISTIC_N_JOBS = 1
 RIDGE_LOGISTIC_C_GRID = np.logspace(-4, 4, 9)
 
-MODEL_REFIT_PERFORMED = True
-FEATURE_SELECTION_RERUN = False
-IMPUTATION_RERUN = True
-UNDER_SAMPLING_RERUN = True
-CALIBRATION_RERUN = False
-
 
 OLD_FINAL_ORIGINAL_HYPERPARAMETERS = {
     "tabpfn": {
-        "device_source": "cuda",
-        "device_used_here": TABPFN_DEVICE,
+        "device": TABPFN_DEVICE,
         "N_ensemble_configurations": TABPFN_ENSEMBLES,
-        "seed_source": "not explicitly set in submitted notebook",
-        "seed_used_here": TABPFN_RANDOM_STATE,
+        "seed": TABPFN_RANDOM_STATE,
     },
     "xgb": {"learning_rate": 0.01, "max_depth": 3, "n_estimators": 200, "random_state": OLD_MODEL_RANDOM_STATE},
     "LR": {"C": 0.001, "penalty": "none", "solver": "saga", "random_state": OLD_MODEL_RANDOM_STATE},
@@ -92,11 +73,9 @@ OLD_FINAL_ORIGINAL_HYPERPARAMETERS = {
 
 OLD_FINAL_UNDERSAMPLING_HYPERPARAMETERS = {
     "tabpfn": {
-        "device_source": "cuda",
-        "device_used_here": TABPFN_DEVICE,
+        "device": TABPFN_DEVICE,
         "N_ensemble_configurations": TABPFN_ENSEMBLES,
-        "seed_source": "not explicitly set in submitted notebook",
-        "seed_used_here": TABPFN_RANDOM_STATE,
+        "seed": TABPFN_RANDOM_STATE,
     },
     "xgb": {"learning_rate": 0.01, "max_depth": 7, "n_estimators": 50, "random_state": OLD_MODEL_RANDOM_STATE},
     "LR": {"C": 0.001, "penalty": "none", "solver": "saga", "random_state": OLD_MODEL_RANDOM_STATE},
@@ -110,21 +89,6 @@ OLD_CV_UNDERSAMPLING_HYPERPARAMETERS = {
     "LR": {"C": 0.001, "penalty": "none", "solver": "saga", "random_state": OLD_CV_UNDERSAMPLING_MODEL_RANDOM_STATE},
     "rf": {"max_depth": 10, "n_estimators": 100, "random_state": OLD_CV_UNDERSAMPLING_MODEL_RANDOM_STATE},
     "lgb": {"learning_rate": 0.01, "max_depth": 5, "n_estimators": 100, "random_state": OLD_CV_UNDERSAMPLING_MODEL_RANDOM_STATE},
-}
-
-OLD_GRID_SEARCH_BEST_PARAMETERS = {
-    "original": {
-        "LR": {"C": 0.001, "penalty": "none", "solver": "saga"},
-        "rf": {"max_depth": 5, "n_estimators": 200},
-        "xgb": {"learning_rate": 0.01, "max_depth": 3, "n_estimators": 200},
-        "lgb": {"learning_rate": 0.01, "max_depth": 5, "n_estimators": 50},
-    },
-    "undersampling": {
-        "LR": {"C": 0.001, "penalty": "none", "solver": "saga"},
-        "rf": {"max_depth": 10, "n_estimators": 100},
-        "xgb": {"learning_rate": 0.01, "max_depth": 7, "n_estimators": 50},
-        "lgb": {"learning_rate": 0.01, "max_depth": 5, "n_estimators": 100},
-    },
 }
 
 SUBMITTED_GRID_SEARCH_MODEL_LABELS = {
@@ -510,12 +474,10 @@ def old_hyperparameter_table() -> pd.DataFrame:
     for condition in ["original", "undersampling"]:
         final_params = old_final_hyperparameters(condition)
         cv_params = old_cv_hyperparameters(condition)
-        grid_params = OLD_GRID_SEARCH_BEST_PARAMETERS.get(condition, {})
         for model_key in OLD_MODEL_ORDER:
             keys = sorted(
                 set(final_params.get(model_key, {}))
                 | set(cv_params.get(model_key, {}))
-                | set(grid_params.get(model_key, {}))
             )
             for key in keys:
                 rows.append(
@@ -523,18 +485,8 @@ def old_hyperparameter_table() -> pd.DataFrame:
                         "condition": condition,
                         "model": model_key,
                         "parameter": key,
-                        "submitted_cv_notebook_value": cv_params.get(model_key, {}).get(key, ""),
-                        "submitted_final_notebook_value": final_params.get(model_key, {}).get(key, ""),
-                        "submitted_grid_search_best_value": grid_params.get(model_key, {}).get(key, ""),
-                        "used_in_review_cv_reanalysis": cv_params.get(model_key, {}).get(key, ""),
-                        "used_in_review_final_reanalysis": final_params.get(model_key, {}).get(key, ""),
-                        "used_in_review_reanalysis": final_params.get(model_key, {}).get(key, ""),
-                        "submitted_record_kept_unchanged": True,
-                        "review_usage_policy": (
-                            "Grid-search best values are retained as submitted provenance. "
-                            "Review model rebuilding follows the values actually used in the "
-                            "submitted CV and final model-fitting notebooks."
-                        ),
+                        "cv_value": cv_params.get(model_key, {}).get(key, ""),
+                        "final_value": final_params.get(model_key, {}).get(key, ""),
                     }
                 )
     return pd.DataFrame(rows)

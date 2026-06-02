@@ -1,20 +1,3 @@
-"""Step 49-01: prepare strict-endpoint train/hold-out data.
-
-This staged script mirrors the data-preparation part of the submitted
-imputation workflow after redefining the endpoint:
-
-1. keep the submitted PPV train/hold-out split;
-2. exclude original Failure level 2 rows;
-3. recode level 0 as success and levels 1/3 as strict anatomical failure;
-4. refit MICE on the strict-endpoint training set;
-5. impute the strict-endpoint hold-out set from that training imputer;
-6. save private imputed train/hold-out and fold files for auditability;
-7. save Step 06 random-under-sampling train/excluded files as private
-   intermediates.
-
-No model fitting is performed in this staged script.
-"""
-
 from __future__ import annotations
 
 from pathlib import Path

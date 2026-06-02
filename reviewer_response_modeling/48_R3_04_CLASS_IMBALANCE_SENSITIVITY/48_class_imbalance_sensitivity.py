@@ -1,20 +1,3 @@
-"""Step 48: class-imbalance strategy sensitivity.
-
-This script answers Reviewer 3 comment 4.  It rebuilds the submitted RFECV36
-model family under class-imbalance strategies:
-
-1. no under-sampling;
-2. RandomUnderSampler(random_state=42);
-3. class weighting for classical models where supported.
-
-The submitted primary result remains the random-undersampling TabPFN workflow.
-The no-undersampling and class-weighting conditions are sensitivity analyses.
-
-The public outputs are limited to policy, tuning, combined metrics, and run
-status. Private fold files are still written as intermediate files, but their
-file-index CSV is not written to `local_outputs`.
-"""
-
 from __future__ import annotations
 
 from pathlib import Path
@@ -382,7 +365,7 @@ def class_imbalance_policy_table(train: pd.DataFrame, rfecv_features: list[str])
                 "policy_section": "analysis_flags",
                 "item": "classical_model_hyperparameter_tuning_rerun",
                 "value": CLASSICAL_MODEL_HYPERPARAMETER_TUNING_RERUN_IN_THIS_SCRIPT,
-                "note": "LR/RF/XGB/LGB Step05-style grid search is rerun for each imbalance strategy.",
+                "note": "LR/RF/XGB/LGB grid search is run for each imbalance strategy.",
             },
             {
                 "policy_section": "analysis_flags",
@@ -477,7 +460,7 @@ def write_private_submitted_rfecv36_fold_files(
 
 
 # %%
-# Step05-style classical-model tuning for imbalance strategies
+# Classical-model grid search for imbalance strategies
 def positive_class_weight_ratio(y_train: np.ndarray) -> float:
     positive_count = int(np.sum(y_train == POSITIVE_CLASS_LABEL))
     negative_count = int(np.sum(y_train != POSITIVE_CLASS_LABEL))
@@ -903,7 +886,7 @@ def run_analysis() -> None:
     # Reader map:
     # 1. Load submitted RFECV36 train/hold-out data and submitted fold files.
     # 2. Walk through the imbalance-strategy table in a fixed order.
-    # 3. For each strategy, run Step05-style tuning and fixed hold-out evaluation
+    # 3. For each strategy, run classical-model grid search and fixed hold-out evaluation
     #    for classical models; fit TabPFN where the submitted API supports it.
     # 4. Add the submitted-style no-under-sampling CV/final rebuild.
     # 5. Save policy, tuning, metrics, and run-status tables.

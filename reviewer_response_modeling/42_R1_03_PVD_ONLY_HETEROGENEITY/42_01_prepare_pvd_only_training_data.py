@@ -1,22 +1,3 @@
-"""Step 42-01: prepare PVD-only train/hold-out data.
-
-This staged script mirrors the data-preparation part of the submitted
-imputation workflow:
-
-1. keep the submitted PPV train/hold-out split;
-2. restrict both sets to PVD-related RRD;
-3. refit MICE on the PVD-only training set;
-4. impute the PVD-only hold-out set from that training imputer;
-5. save private imputed train/hold-out and fold files as intermediate files;
-6. save Step 06 random-under-sampling train/excluded files as intermediate
-   files.
-
-Only case flow and policy CSVs are written to `local_outputs`; file-index CSVs
-are intentionally not written as public outputs.
-
-No model fitting is performed in this staged script.
-"""
-
 from __future__ import annotations
 
 from pathlib import Path

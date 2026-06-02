@@ -1,22 +1,5 @@
 #!/usr/bin/env python3
 
-"""Step 50-04: repeated stratified 5-fold CV stability sensitivity.
-
-REVIEWER REVISION ADDITION:
-    Reviewer #3 Comment #9 requested a clearer sample-size/model-complexity
-    justification and an optimism or stability analysis.  This script adds an
-    explicit stability sensitivity analysis using the submitted imputed
-    Japanese PPV cohort, the fixed submitted RFECV36 predictors, and repeated
-    stratified 5-fold cross-validation.
-
-Important scope:
-    This is not a full leakage-safe pipeline rerun from raw data.  Imputation
-    and RFECV36 feature selection are fixed from the submitted workflow.  The
-    analysis evaluates whether model ranking performance is stable across
-    repeated train/validation splits after imputation, with random
-    under-sampling applied inside each training fold.
-"""
-
 from __future__ import annotations
 
 from pathlib import Path

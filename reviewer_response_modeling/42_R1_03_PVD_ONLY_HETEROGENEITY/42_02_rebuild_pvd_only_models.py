@@ -1,22 +1,3 @@
-"""Step 42-02: rebuild PVD-only models from prepared data.
-
-Run `42_01_prepare_pvd_only_training_data.py` first.
-
-This file intentionally keeps the model-building code close to the submitted
-notebooks while limiting public outputs to tuning results, combined metrics,
-and run status:
-
-- `05_Hyperparameter_Tuning.ipynb`
-- `07_CV_ORIGINAL.ipynb`
-- `08_CV_UnderSampling.ipynb`
-- `09_Final_ORIGINAL.ipynb`
-- `10_Final_UnderSampling.ipynb`
-
-The cohort has changed to PVD-related RRD only, so LR/RF/XGB/LGB are retuned
-with the submitted Step 05 grid on the changed training set.  TabPFN is not
-grid-tuned, consistent with the submitted notebooks.
-"""
-
 from __future__ import annotations
 
 from pathlib import Path
@@ -397,7 +378,7 @@ def run_step07_cv_original(
                 "fold": fold_index,
                 "model": model_key,
                 "model_label": MODEL_LABELS[model_key],
-                "parameter_policy": "tabpfn_fixed_or_step05_grid_best_on_changed_training_set",
+                "parameter_policy": "tabpfn_fixed_or_step05_selected_parameters",
                 "best_parameters": "" if model_key == "tabpfn" else str(best_parameters[model_key]),
                 "resampling": "none",
                 "train_n_before_resampling": len(y_train),
@@ -468,7 +449,7 @@ def run_step08_cv_undersampling(
                 "fold": fold_index,
                 "model": model_key,
                 "model_label": MODEL_LABELS[model_key],
-                "parameter_policy": "tabpfn_fixed_or_step05_grid_best_on_changed_training_set",
+                "parameter_policy": "tabpfn_fixed_or_step05_selected_parameters",
                 "best_parameters": "" if model_key == "tabpfn" else str(best_parameters[model_key]),
                 "resampling": f"fold_{fold_index}_undersampled_train_data.csv from Step06",
                 "train_n_before_resampling": "",
@@ -550,7 +531,7 @@ def run_final_holdout_step(
             "fold": "",
             "model": model_key,
             "model_label": MODEL_LABELS[model_key],
-            "parameter_policy": "tabpfn_fixed_or_step05_grid_best_on_changed_training_set",
+            "parameter_policy": "tabpfn_fixed_or_step05_selected_parameters",
             "best_parameters": "" if model_key == "tabpfn" else str(best_parameters[model_key]),
             "resampling": train_source,
             "train_n_before_resampling": "",
@@ -617,7 +598,7 @@ def run_analysis() -> None:
 
     # Submitted-style reading order:
     # 1. Load RFECV36 features and Step42-01 prepared train/hold-out tables.
-    # 2. Re-run Step05-style hyperparameter tuning on the changed PVD-only target set.
+    # 2. Run classical-model hyperparameter tuning on the PVD-only training set.
     # 3. Re-run Step07 original CV and Step08 undersampling CV.
     # 4. Re-run Step09 original final hold-out and Step10 undersampling final hold-out.
     # 5. Save the same three reviewer tables: tuning, metrics, and run status.

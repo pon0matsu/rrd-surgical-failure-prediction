@@ -1,19 +1,3 @@
-"""Step 42: PVD-related RRD-only model rebuilding.
-
-This analysis answers Reviewer 1 comment 3.  The submitted PPV train/hold-out
-split is preserved, but both sets are restricted to PVD-related RRD.  The
-imputer, random undersampling, hyperparameter tuning for classical comparator
-models, and model fitting are then rerun inside this step.
-
-The submitted RFECV36 feature policy is retained.  Feature selection itself is
-not rerun.
-
-The public outputs are intentionally limited to the files needed to check the
-analysis: case flow, policy, tuning results, combined model metrics, and run
-status. Private imputed/fold files are still generated as intermediate files,
-but their file-index CSVs are not written to `local_outputs`.
-"""
-
 from __future__ import annotations
 
 from pathlib import Path
@@ -152,7 +136,7 @@ def pvd_policy_table(feature_policy: pd.DataFrame) -> pd.DataFrame:
                 "policy_section": "analysis_flags",
                 "item": "classical_model_hyperparameter_tuning_rerun",
                 "value": CLASSICAL_MODEL_HYPERPARAMETER_TUNING_RERUN_IN_THIS_SCRIPT,
-                "note": "LR/RF/XGB/LGB Step05-style grid search is rerun on the PVD-only training data.",
+                "note": "LR/RF/XGB/LGB grid search is run on the PVD-only training data.",
             },
             {
                 "policy_section": "analysis_flags",

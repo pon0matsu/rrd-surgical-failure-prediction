@@ -1,12 +1,3 @@
-"""Shared utilities for the compact reviewer-reanalysis workspace.
-
-REVIEWER REVISION ADDITION:
-    These helpers keep the Review/ folder focused on code-generated,
-    reviewer-facing aggregate outputs.  Scripts may read private row-level
-    prediction sources from the internal workspace, but they do not copy those
-    rows into Review/local_outputs.
-"""
-
 from __future__ import annotations
 
 import hashlib
@@ -32,37 +23,12 @@ from sklearn.metrics import (
 REVIEW_ROOT = Path(__file__).resolve().parent
 WORKSPACE_ROOT = REVIEW_ROOT.parent
 SUBMITTED_CODE_ROOT = WORKSPACE_ROOT / "20250725_RRD-20260507T074230Z-3-001/20250725_RRD"
-PREVIOUS_CODES_ROOT = WORKSPACE_ROOT / "RRD_Analysis/data/previous_codes"
 
 TARGET_COLUMN = "Failure level (0 vs 1 to 3) (6M)"
 POSITIVE_CLASS_LABEL = 1
 DEFAULT_CLASSIFICATION_THRESHOLD = 0.5
 BOOTSTRAP_ITERATIONS = 1000
 BOOTSTRAP_SEED = 42
-
-MODEL_COLUMNS = {
-    "tabpfn": "tabpfn_pred_proba",
-    "xgb": "xgb_pred_proba",
-    "LR": "LR_pred_proba",
-    "rf": "rf_pred_proba",
-    "lgb": "lgb_pred_proba",
-}
-
-MODEL_LABELS = {
-    "tabpfn": "TabPFN",
-    "xgb": "XGBoost",
-    "LR": "Logistic regression",
-    "rf": "Random forest",
-    "lgb": "LightGBM",
-}
-
-PRIMARY_POLICY = (
-    "The manuscript primary model remains the submitted RFECV36 TabPFN "
-    "random-undersampling workflow.  Ridge/logistic models, all46 predictors, "
-    "compact26 predictors, no-undersampling, class weighting, recalibration, "
-    "strict-endpoint, and subgroup analyses are reviewer-response sensitivity "
-    "or comparator evidence."
-)
 
 
 def utc_now() -> str:

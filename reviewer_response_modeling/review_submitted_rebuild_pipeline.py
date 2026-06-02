@@ -1,17 +1,3 @@
-"""Submitted-style data-preparation helpers for reviewer analyses.
-
-This module is the Review-local counterpart of the submitted model-building
-notebooks that are needed when a reviewer analysis changes the cohort or
-endpoint.  It keeps the data-preparation parts reusable:
-
-- 03: train/hold-out imputation and fold-wise imputation;
-- 06: random under-sampling files;
-
-Model fitting for changed-cohort or changed-endpoint analyses is intentionally
-kept in each step-specific `*_02_rebuild_*_models.py` script so reviewers can
-read the Step05/07/08/09/10 flow without jumping through shared abstractions.
-"""
-
 from __future__ import annotations
 
 from pathlib import Path
@@ -33,49 +19,11 @@ from review_modeling import (
 
 # %%
 # Submitted notebook settings
-SUBMITTED_STEP_MAP = [
-    {
-        "submitted_step": "03_Imputation_Dataset_Development.ipynb",
-        "review_action": "MICE imputation with datasets=5, mice iterations=5, random_state=0",
-    },
-    {
-        "submitted_step": "05_Hyperparameter_Tuning.ipynb",
-        "review_action": "GridSearchCV(cv=5, scoring='roc_auc') with submitted LR/RF/XGB/LGB grids",
-    },
-    {
-        "submitted_step": "06_Undersampling.ipynb",
-        "review_action": "RandomUnderSampler(random_state=42) for fold and final training sets",
-    },
-    {
-        "submitted_step": "07_CV_ORIGINAL.ipynb",
-        "review_action": "5-fold CV using submitted no-under-sampling final hyperparameters",
-    },
-    {
-        "submitted_step": "08_CV_UnderSampling.ipynb",
-        "review_action": "5-fold CV after random under-sampling using submitted under-sampling final hyperparameters",
-    },
-    {
-        "submitted_step": "09_Final_ORIGINAL.ipynb",
-        "review_action": "Fit full training set without under-sampling and evaluate fixed hold-out",
-    },
-    {
-        "submitted_step": "10_Final_UnderSampling.ipynb",
-        "review_action": "Fit random-under-sampled full training set and evaluate fixed hold-out",
-    },
-]
-
 CV_FOLDS = 5
 IMPUTATION_DATASETS = 5
 IMPUTATION_ITERATIONS = 5
 IMPUTATION_RANDOM_STATE = 0
 SPLIT_RANDOM_STATE = 42
-TUNING_TEST_SIZE = 0.30
-
-
-# %%
-# Method tables
-def submitted_step_map_table() -> pd.DataFrame:
-    return pd.DataFrame(SUBMITTED_STEP_MAP)
 
 
 # %%
