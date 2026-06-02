@@ -1,0 +1,81 @@
+source_group,submitted_source,analysis_stage,resampling_condition,model_label,parameter_name,submitted_value,review_note
+grid_search_setting,05_Hyperparameter_Tuning.ipynb,Step05 grid search,shared classical-model setting,GridSearchCV,cv,5,submitted grid-search setting
+grid_search_setting,05_Hyperparameter_Tuning.ipynb,Step05 grid search,shared classical-model setting,GridSearchCV,scoring,roc_auc,submitted grid-search setting
+grid_search_setting,05_Hyperparameter_Tuning.ipynb,Step05 grid search,shared classical-model setting,GridSearchCV,n_jobs,-1,submitted grid-search setting
+grid_search_setting,05_Hyperparameter_Tuning.ipynb,Step05 grid search,shared classical-model setting,train_test_split,test_size,0.3,submitted tuning split setting
+grid_search_setting,05_Hyperparameter_Tuning.ipynb,Step05 grid search,shared classical-model setting,train_test_split,random_state,42,submitted tuning split seed
+grid_search_setting,05_Hyperparameter_Tuning.ipynb,Step05 grid search,random under-sampling,RandomUnderSampler,random_state,42,submitted tuning undersampling seed
+resampling_setting,06_Undersampling.ipynb,Step06 fold undersampling,random under-sampling,RandomUnderSampler,random_state,42,used to create fold_i_undersampled_train_data.csv
+resampling_setting,06_Undersampling.ipynb,Step06 final undersampling,random under-sampling,RandomUnderSampler,random_state,42,used to create train_data_after_imputation_undersampled.csv
+model_fitting,07_CV_ORIGINAL.ipynb,Step07 5-fold CV,no under-sampling,TabPFN,device,cuda,submitted notebook value
+model_fitting,07_CV_ORIGINAL.ipynb,Step07 5-fold CV,no under-sampling,TabPFN,N_ensemble_configurations,32,submitted notebook value
+model_fitting,07_CV_ORIGINAL.ipynb,Step07 5-fold CV,no under-sampling,TabPFN,seed,not explicitly set,submitted notebook value
+model_fitting,07_CV_ORIGINAL.ipynb,Step07 5-fold CV,no under-sampling,Logistic Regression,C,0.001,submitted notebook fitting value
+model_fitting,07_CV_ORIGINAL.ipynb,Step07 5-fold CV,no under-sampling,Logistic Regression,penalty,none,submitted notebook fitting value
+model_fitting,07_CV_ORIGINAL.ipynb,Step07 5-fold CV,no under-sampling,Logistic Regression,solver,saga,submitted notebook fitting value
+model_fitting,07_CV_ORIGINAL.ipynb,Step07 5-fold CV,no under-sampling,Logistic Regression,random_state,123,submitted notebook fitting value
+model_fitting,07_CV_ORIGINAL.ipynb,Step07 5-fold CV,no under-sampling,Random Forest,max_depth,5,submitted notebook fitting value
+model_fitting,07_CV_ORIGINAL.ipynb,Step07 5-fold CV,no under-sampling,Random Forest,n_estimators,200,submitted notebook fitting value
+model_fitting,07_CV_ORIGINAL.ipynb,Step07 5-fold CV,no under-sampling,Random Forest,random_state,123,submitted notebook fitting value
+model_fitting,07_CV_ORIGINAL.ipynb,Step07 5-fold CV,no under-sampling,XGBoost,learning_rate,0.01,submitted notebook fitting value
+model_fitting,07_CV_ORIGINAL.ipynb,Step07 5-fold CV,no under-sampling,XGBoost,max_depth,3,submitted notebook fitting value
+model_fitting,07_CV_ORIGINAL.ipynb,Step07 5-fold CV,no under-sampling,XGBoost,n_estimators,200,submitted notebook fitting value
+model_fitting,07_CV_ORIGINAL.ipynb,Step07 5-fold CV,no under-sampling,XGBoost,random_state,123,submitted notebook fitting value
+model_fitting,07_CV_ORIGINAL.ipynb,Step07 5-fold CV,no under-sampling,LightGBM,learning_rate,0.01,submitted notebook fitting value
+model_fitting,07_CV_ORIGINAL.ipynb,Step07 5-fold CV,no under-sampling,LightGBM,max_depth,5,submitted notebook fitting value
+model_fitting,07_CV_ORIGINAL.ipynb,Step07 5-fold CV,no under-sampling,LightGBM,n_estimators,50,submitted notebook fitting value
+model_fitting,07_CV_ORIGINAL.ipynb,Step07 5-fold CV,no under-sampling,LightGBM,random_state,123,submitted notebook fitting value
+model_fitting,08_CV_UnderSampling.ipynb,Step08 5-fold CV,random under-sampling,TabPFN,device,cuda,submitted notebook value
+model_fitting,08_CV_UnderSampling.ipynb,Step08 5-fold CV,random under-sampling,TabPFN,N_ensemble_configurations,32,submitted notebook value
+model_fitting,08_CV_UnderSampling.ipynb,Step08 5-fold CV,random under-sampling,TabPFN,seed,not explicitly set,submitted notebook value
+model_fitting,08_CV_UnderSampling.ipynb,Step08 5-fold CV,random under-sampling,Logistic Regression,C,0.001,submitted notebook fitting value
+model_fitting,08_CV_UnderSampling.ipynb,Step08 5-fold CV,random under-sampling,Logistic Regression,penalty,none,submitted notebook fitting value
+model_fitting,08_CV_UnderSampling.ipynb,Step08 5-fold CV,random under-sampling,Logistic Regression,solver,saga,submitted notebook fitting value
+model_fitting,08_CV_UnderSampling.ipynb,Step08 5-fold CV,random under-sampling,Logistic Regression,random_state,0,submitted notebook fitting value
+model_fitting,08_CV_UnderSampling.ipynb,Step08 5-fold CV,random under-sampling,Random Forest,max_depth,10,submitted notebook fitting value
+model_fitting,08_CV_UnderSampling.ipynb,Step08 5-fold CV,random under-sampling,Random Forest,n_estimators,100,submitted notebook fitting value
+model_fitting,08_CV_UnderSampling.ipynb,Step08 5-fold CV,random under-sampling,Random Forest,random_state,0,submitted notebook fitting value
+model_fitting,08_CV_UnderSampling.ipynb,Step08 5-fold CV,random under-sampling,XGBoost,learning_rate,0.01,submitted notebook fitting value
+model_fitting,08_CV_UnderSampling.ipynb,Step08 5-fold CV,random under-sampling,XGBoost,max_depth,7,submitted notebook fitting value
+model_fitting,08_CV_UnderSampling.ipynb,Step08 5-fold CV,random under-sampling,XGBoost,n_estimators,50,submitted notebook fitting value
+model_fitting,08_CV_UnderSampling.ipynb,Step08 5-fold CV,random under-sampling,XGBoost,random_state,0,submitted notebook fitting value
+model_fitting,08_CV_UnderSampling.ipynb,Step08 5-fold CV,random under-sampling,LightGBM,learning_rate,0.01,submitted notebook fitting value
+model_fitting,08_CV_UnderSampling.ipynb,Step08 5-fold CV,random under-sampling,LightGBM,max_depth,5,submitted notebook fitting value
+model_fitting,08_CV_UnderSampling.ipynb,Step08 5-fold CV,random under-sampling,LightGBM,n_estimators,100,submitted notebook fitting value
+model_fitting,08_CV_UnderSampling.ipynb,Step08 5-fold CV,random under-sampling,LightGBM,random_state,0,submitted notebook fitting value
+model_fitting,09_Final_ORIGINAL.ipynb,Step09 final hold-out,no under-sampling,TabPFN,device,cuda,submitted notebook value
+model_fitting,09_Final_ORIGINAL.ipynb,Step09 final hold-out,no under-sampling,TabPFN,N_ensemble_configurations,32,submitted notebook value
+model_fitting,09_Final_ORIGINAL.ipynb,Step09 final hold-out,no under-sampling,TabPFN,seed,not explicitly set,submitted notebook value
+model_fitting,09_Final_ORIGINAL.ipynb,Step09 final hold-out,no under-sampling,Logistic Regression,C,0.001,submitted notebook fitting value
+model_fitting,09_Final_ORIGINAL.ipynb,Step09 final hold-out,no under-sampling,Logistic Regression,penalty,none,submitted notebook fitting value
+model_fitting,09_Final_ORIGINAL.ipynb,Step09 final hold-out,no under-sampling,Logistic Regression,solver,saga,submitted notebook fitting value
+model_fitting,09_Final_ORIGINAL.ipynb,Step09 final hold-out,no under-sampling,Logistic Regression,random_state,123,submitted notebook fitting value
+model_fitting,09_Final_ORIGINAL.ipynb,Step09 final hold-out,no under-sampling,Random Forest,max_depth,5,submitted notebook fitting value
+model_fitting,09_Final_ORIGINAL.ipynb,Step09 final hold-out,no under-sampling,Random Forest,n_estimators,200,submitted notebook fitting value
+model_fitting,09_Final_ORIGINAL.ipynb,Step09 final hold-out,no under-sampling,Random Forest,random_state,123,submitted notebook fitting value
+model_fitting,09_Final_ORIGINAL.ipynb,Step09 final hold-out,no under-sampling,XGBoost,learning_rate,0.01,submitted notebook fitting value
+model_fitting,09_Final_ORIGINAL.ipynb,Step09 final hold-out,no under-sampling,XGBoost,max_depth,3,submitted notebook fitting value
+model_fitting,09_Final_ORIGINAL.ipynb,Step09 final hold-out,no under-sampling,XGBoost,n_estimators,200,submitted notebook fitting value
+model_fitting,09_Final_ORIGINAL.ipynb,Step09 final hold-out,no under-sampling,XGBoost,random_state,123,submitted notebook fitting value
+model_fitting,09_Final_ORIGINAL.ipynb,Step09 final hold-out,no under-sampling,LightGBM,learning_rate,0.01,submitted notebook fitting value
+model_fitting,09_Final_ORIGINAL.ipynb,Step09 final hold-out,no under-sampling,LightGBM,max_depth,5,submitted notebook fitting value
+model_fitting,09_Final_ORIGINAL.ipynb,Step09 final hold-out,no under-sampling,LightGBM,n_estimators,50,submitted notebook fitting value
+model_fitting,09_Final_ORIGINAL.ipynb,Step09 final hold-out,no under-sampling,LightGBM,random_state,123,submitted notebook fitting value
+model_fitting,10_Final_UnderSampling.ipynb,Step10 final hold-out,random under-sampling,TabPFN,device,cuda,submitted notebook value
+model_fitting,10_Final_UnderSampling.ipynb,Step10 final hold-out,random under-sampling,TabPFN,N_ensemble_configurations,32,submitted notebook value
+model_fitting,10_Final_UnderSampling.ipynb,Step10 final hold-out,random under-sampling,TabPFN,seed,not explicitly set,submitted notebook value
+model_fitting,10_Final_UnderSampling.ipynb,Step10 final hold-out,random under-sampling,Logistic Regression,C,0.001,submitted notebook fitting value
+model_fitting,10_Final_UnderSampling.ipynb,Step10 final hold-out,random under-sampling,Logistic Regression,penalty,none,submitted notebook fitting value
+model_fitting,10_Final_UnderSampling.ipynb,Step10 final hold-out,random under-sampling,Logistic Regression,solver,saga,submitted notebook fitting value
+model_fitting,10_Final_UnderSampling.ipynb,Step10 final hold-out,random under-sampling,Logistic Regression,random_state,123,submitted notebook fitting value
+model_fitting,10_Final_UnderSampling.ipynb,Step10 final hold-out,random under-sampling,Random Forest,max_depth,10,submitted notebook fitting value
+model_fitting,10_Final_UnderSampling.ipynb,Step10 final hold-out,random under-sampling,Random Forest,n_estimators,100,submitted notebook fitting value
+model_fitting,10_Final_UnderSampling.ipynb,Step10 final hold-out,random under-sampling,Random Forest,random_state,123,submitted notebook fitting value
+model_fitting,10_Final_UnderSampling.ipynb,Step10 final hold-out,random under-sampling,XGBoost,learning_rate,0.01,submitted notebook fitting value
+model_fitting,10_Final_UnderSampling.ipynb,Step10 final hold-out,random under-sampling,XGBoost,max_depth,7,submitted notebook fitting value
+model_fitting,10_Final_UnderSampling.ipynb,Step10 final hold-out,random under-sampling,XGBoost,n_estimators,50,submitted notebook fitting value
+model_fitting,10_Final_UnderSampling.ipynb,Step10 final hold-out,random under-sampling,XGBoost,random_state,123,submitted notebook fitting value
+model_fitting,10_Final_UnderSampling.ipynb,Step10 final hold-out,random under-sampling,LightGBM,learning_rate,0.01,submitted notebook fitting value
+model_fitting,10_Final_UnderSampling.ipynb,Step10 final hold-out,random under-sampling,LightGBM,max_depth,5,submitted notebook fitting value
+model_fitting,10_Final_UnderSampling.ipynb,Step10 final hold-out,random under-sampling,LightGBM,n_estimators,100,submitted notebook fitting value
+model_fitting,10_Final_UnderSampling.ipynb,Step10 final hold-out,random under-sampling,LightGBM,random_state,123,submitted notebook fitting value

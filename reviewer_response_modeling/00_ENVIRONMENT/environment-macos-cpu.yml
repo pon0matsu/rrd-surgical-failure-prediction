@@ -1,0 +1,26 @@
+name: rrd_review_macos_cpu
+channels:
+  - pytorch
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - numpy=1.25.2
+  - pandas=2.0.3
+  - openpyxl>=3.1,<4
+  - scipy=1.11.4
+  - scikit-learn=1.2.2
+  - matplotlib=3.7.1
+  - pillow>=10,<13
+  - requests>=2.31,<3
+  - joblib>=1.4,<2
+  - lightgbm=4.1.0
+  - xgboost=2.1.0
+  - pytorch=2.3.1
+  - pip:
+      - tabpfn==0.1.11
+      - miceforest==5.7.0
+      - imbalanced-learn==0.10.1
+      - imblearn==0.0
+      - blosc==1.11.4
+      - dill==0.4.1
