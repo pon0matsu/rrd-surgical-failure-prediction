@@ -1,7 +1,7 @@
 # RRD Surgical Failure Prediction
 
 This repository contains public code for the model-building analyses used in
-the manuscript on surgical failure prediction after rhegmatogenous retinal
+the manuscript on surgical failure prediction after PPV-treated rhegmatogenous retinal
 detachment surgery.
 
 ## Contents
